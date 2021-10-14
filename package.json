@@ -1,0 +1,26 @@
+{
+  "name": "twilio-picture-slide-show",
+  "version": "1.0.0",
+  "description": "A system to receive pictures from Twilio, push to GCS, and then pull them and put them into a slide show",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kammerdiener-Technologies/twilio-picture-slide-show.git"
+  },
+  "author": "Nick Kammerdiener",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kammerdiener-Technologies/twilio-picture-slide-show/issues"
+  },
+  "homepage": "https://github.com/Kammerdiener-Technologies/twilio-picture-slide-show#readme",
+  "dependencies": {
+    "@google-cloud/storage": "^5.15.2",
+    "body-parser": "^1.17.0",
+    "express": "^4.17.0",
+    "multer": "^1.4.3",
+    "twilio": "^3.33.0"
+  }
+}
