@@ -1,0 +1,19 @@
+name: Deploy
+
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - id: deploy
+      uses: google-github-actions/deploy-cloud-functions@main
+      with:
+        name: picture-slide-show
+        runtime: nodejs16
+        credentials: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY_FILE }}
+        env_vars: "GOOGLE_CLOUD_KEYFILE: ${GOOGLE_CLOUD_KEYFILE}, GOOGLE_CLOUD_PROJECT_ID: ${GOOGLE_CLOUD_PROJECT_ID}, GOOGLE_CLOUD_BUCKET: ${GOOGLE_CLOUD_BUCKET}"
