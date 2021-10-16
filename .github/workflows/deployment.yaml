@@ -12,12 +12,13 @@ jobs:
     - uses: actions/checkout@v2
     - id: deploy
       uses: google-github-actions/deploy-cloud-functions@main
-      env: 
-        GOOGLE_CLOUD_KEYFILE: ${{ secrets.GOOGLE_CLOUD_KEYFILE }}
-        GOOGLE_CLOUD_PROJECT_ID: ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }}
-        GOOGLE_CLOUD_BUCKET: ${{ secrets.GOOGLE_CLOUD_BUCKET }}
       with:
         name: picture-slide-show
+        env: 
+          GOOGLE_CLOUD_KEYFILE: ${{ secrets.GOOGLE_CLOUD_KEYFILE }}
+          GOOGLE_CLOUD_PROJECT_ID: ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }}
+          GOOGLE_CLOUD_BUCKET: ${{ secrets.GOOGLE_CLOUD_BUCKET }}
         runtime: nodejs16
+        entry_point: app
         credentials: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY_FILE }}
         env_vars: "GOOGLE_CLOUD_KEYFILE=$GOOGLE_CLOUD_KEYFILE,GOOGLE_CLOUD_PROJECT_ID=$GOOGLE_CLOUD_PROJECT_ID,GOOGLE_CLOUD_BUCKET=$GOOGLE_CLOUD_BUCKET"

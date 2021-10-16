@@ -50,3 +50,7 @@ app.post('/sms', (req, res) => {
 });
 
 app.listen(3000, () => console.log('Live Long and Prosper on 3000!'));
+
+module.exports = {
+    app
+};
