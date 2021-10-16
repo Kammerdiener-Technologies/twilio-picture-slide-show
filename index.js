@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false } ));
 app.post('/sms', (req, res) => {
   const twiml = new MessagingResponse();
   
-  const storage = Storage({
+  const storage = new Storage({
     projectId: GOOGLE_CLOUD_PROJECT_ID,
     keyFilename: GOOGLE_CLOUD_KEYFILE,
   });
