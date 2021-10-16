@@ -8,14 +8,14 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env: 
-      GOOGLE_CLOUD_KEYFILE: ${{ secrets.GOOGLE_CLOUD_KEYFILE }}
-      GOOGLE_CLOUD_PROJECT_ID: ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }}
-      GOOGLE_CLOUD_BUCKET: ${{ secrets.GOOGLE_CLOUD_BUCKET }}
     steps:
     - uses: actions/checkout@v2
     - id: deploy
       uses: google-github-actions/deploy-cloud-functions@main
+      env: 
+        GOOGLE_CLOUD_KEYFILE: ${{ secrets.GOOGLE_CLOUD_KEYFILE }}
+        GOOGLE_CLOUD_PROJECT_ID: ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }}
+        GOOGLE_CLOUD_BUCKET: ${{ secrets.GOOGLE_CLOUD_BUCKET }}
       with:
         name: picture-slide-show
         runtime: nodejs16

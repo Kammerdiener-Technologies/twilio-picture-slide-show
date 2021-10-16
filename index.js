@@ -37,7 +37,7 @@ app.post('/sms', (req, res) => {
     const fileName = path.basename(filename);
     const file = bucket.file(fileName);
 
-    await bucket.upload(filename, {})
+    bucket.upload(filename, {})
         .then(() => file.makePublic())
         .then(() => exports.getPublicUrl(bucketName, gcsName));
 
