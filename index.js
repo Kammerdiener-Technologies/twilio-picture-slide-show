@@ -9,8 +9,6 @@ const { Storage } = Cloud
 // TWILIO
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
-const GOOGLE_CLOUD_PROJECT_ID = process.env.GOOGLE_CLOUD_PROJECT_ID
-const GOOGLE_CLOUD_KEYFILE = process.env.GOOGLE_CLOUD_KEYFILE
 const GOOGLE_CLOUD_BUCKET = process.env.GOOGLE_CLOUD_BUCKET
 
 const app = express();
@@ -20,10 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false } ));
 app.post('/sms', (req, res) => {
   const twiml = new MessagingResponse();
   
-  const storage = new Storage({
-    projectId: GOOGLE_CLOUD_PROJECT_ID,
-    keyFilename: GOOGLE_CLOUD_KEYFILE,
-  });
+  const storage = new Storage();
 
   if(req.body.NumMedia !== '0') {
     const filename = `${req.body.MessageSid}.png`;

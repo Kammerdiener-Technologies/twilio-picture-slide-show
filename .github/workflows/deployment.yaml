@@ -21,4 +21,4 @@ jobs:
         runtime: nodejs16
         entry_point: app
         credentials: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY_FILE }}
-        env_vars: "GOOGLE_CLOUD_KEYFILE=$GOOGLE_CLOUD_KEYFILE,GOOGLE_CLOUD_PROJECT_ID=$GOOGLE_CLOUD_PROJECT_ID,GOOGLE_CLOUD_BUCKET=$GOOGLE_CLOUD_BUCKET"
+        env_vars: "GOOGLE_CLOUD_BUCKET=photo-store-7a2f8200"
