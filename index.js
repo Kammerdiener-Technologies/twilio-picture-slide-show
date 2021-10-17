@@ -1,4 +1,3 @@
-const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
@@ -28,18 +27,20 @@ app.post('/sms', (req, res) => {
 
   if(req.body.NumMedia !== '0') {
     const filename = `${req.body.MessageSid}.png`;
-    const url = req.body.MediaUrl0;
+    const writeSteam = storage.bucket(GOOGLE_CLOUD_BUCKET).file(filename)
+        .createWriteStream({
+            public: false,
+        })
+    
+    
+    const url = request(req.body.MediaUrl0);
 
-    request(url).pipe(fs.createWriteStream(filename))
-      .on('close', () => console.log('Image downloaded.'));
-
-    const bucket = storage.bucket(GOOGLE_CLOUD_BUCKET);
-    const fileName = path.basename(filename);
-    const file = bucket.file(fileName);
-
-    bucket.upload(filename, {})
-        .then(() => file.makePublic())
-        .then(() => exports.getPublicUrl(bucketName, gcsName));
+    url.pipe(writeStream)
+        .on('finish', () => console.log("image saved"))
+        .on('error', err => {
+            writeStream.end();
+            console.error(err);
+        })
 
     twiml.message('Thanks for the image!');
   } else {
