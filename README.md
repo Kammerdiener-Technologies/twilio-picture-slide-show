@@ -14,7 +14,5 @@ This project will recieve images from a Twilio MMS and upload the images to a GC
 ## Environment Variables
 | ENV Var | Description | Required | Default |
 | ------- | ----------- | -------- | ------- |
-| GOOGLE_CLOUD_PROJECT_ID | The Google Cloud Project where the Service Account and Bucket are located | Yes | "" |
-| GOOGLE_CLOUD_KEYFILE | The Google Cloud Service Account Key File | Yes | "" |
 | GOOGLE_CLOUD_BUCKET | The name of the Google Cloud Storage Bucket you want to push the photos into | Yes | "" |
 
