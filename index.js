@@ -15,7 +15,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false } ));
 
-app.post('/sms', (req, res) => {
+app.post('/sms', async (req, res) => {
   const twiml = new MessagingResponse();
   
   const storage = new Storage();
@@ -30,7 +30,7 @@ app.post('/sms', (req, res) => {
     
     const url = request(req.body.MediaUrl0);
 
-    url.pipe(writeStream)
+    await url.pipe(writeStream)
         .on('finish', () => console.log("image saved"))
         .on('error', err => {
             writeStream.end();
