@@ -27,7 +27,7 @@ app.post('/sms', (req, res) => {
 
   if(req.body.NumMedia !== '0') {
     const filename = `${req.body.MessageSid}.png`;
-    const writeSteam = storage.bucket(GOOGLE_CLOUD_BUCKET).file(filename)
+    const writeStream = storage.bucket(GOOGLE_CLOUD_BUCKET).file(filename)
         .createWriteStream({
             public: false,
         })
