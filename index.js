@@ -24,7 +24,7 @@ app.post('/sms', async (req, res) => {
     const filename = `${req.body.MessageSid}.png`;
     const writeStream = storage.bucket(GOOGLE_CLOUD_BUCKET).file(filename)
         .createWriteStream({
-            public: false,
+            public: true,
         })
     
     
